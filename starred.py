@@ -6,11 +6,12 @@ from github3 import GitHub
 
 desc = '''# starred
 
-## backup
+[![Build Status](https://travis-ci.org/maguowei/starred.svg?branch=master)](https://travis-ci.org/maguowei/starred)
+[![Requirements Status](https://requires.io/github/maguowei/starred/requirements.svg?branch=master)](https://requires.io/github/maguowei/starred/requirements/?branch=master)
 
 ```
-python starred.py > README.md
-
+pip install starred
+starred.py --username maguowei > README.md
 ```
 
 ## Repositories
