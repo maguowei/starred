@@ -3,5 +3,6 @@ python:
   - "3.3"
   - "3.4"
   - "3.5"
-install: "pip install -r requirements.txt"
-script: python3 starred.py --username torvalds
+install: "python setup.py install"
+script:
+  - starred --username maguowei --sort

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-
+import os
+from collections import OrderedDict
 import click
 from github3 import GitHub
 
@@ -11,9 +12,14 @@ desc = '''# Starred
 
 '''
 
+
 @click.command()
-@click.option('--username', default='maguowei', help='GitHub username')
-def starred(username):
+@click.option('--username', default=lambda: os.environ.get('USER', ''), help='GitHub username')
+@click.option('--sort',  is_flag=True, help='sort by language')
+def starred(username, sort):
+    """
+
+    """
     gh = GitHub()
     stars = gh.starred_by(username)
     click.echo(desc)
@@ -23,7 +29,11 @@ def starred(username):
         description = s.description or ''
         if language not in repo_dict:
             repo_dict[language] = []
-        repo_dict[language].append([s.name, s.html_url, description.encode('utf-8').strip()])
+        repo_dict[language].append([s.name, s.html_url, description.strip()])
+
+    if sort:
+        repo_dict = OrderedDict(sorted(repo_dict.items(), key=lambda l: l[0]))
+
     for language in repo_dict.keys():
         data = '    - [{}](#{})'.format(language, language.lower())
         click.echo(data)
