@@ -1,8 +1,20 @@
 language: python
 python:
-  - "3.3"
-  - "3.4"
-  - "3.5"
-install: "python setup.py install"
+- '3.3'
+- '3.4'
+- '3.5'
+install: python setup.py install
 script:
-  - starred --username maguowei --sort
+- starred --username maguowei --sort
+deploy:
+  provider: pypi
+  user: maguowei
+  password:
+    secure: X0Q9rBV65HNYWbqggB7gFpF7KRbEobGAuSX57J1LTM6ukYAYJi5WdFuIs4qNEatLO+JJS86irxS5KOoNZqRhecuC9Qntx07sqa0759ZzjYJpzf1/tmPyc0mOFIDDQp+TGY4WPIEwttB4MhyXRyyYRQNOXA82tgL0LPnGtdD+edHLXNU2Hq4RCVThiapM6Z848qduffwvbocn8CORhsO1AH9M3pFEKr/4GWu65a8FbnA/r4RDwV287lTiAu4sGJv74HwRbqJbLW1C7Y3WGZp2cfKC2e0BI3/4gwNpp6IvEUk4B9soOfrP2ZuIW+AMYiXI9R5nwgwzjp6uk/Z3An2ejDdjoNKW84KKCQmpYBZyxhKZAUBXcLIx4ZtB/96BWW/SiFBIQH5AffryB3e8zecSZuPzya7Ifsou3GrXLGze0Ewi8iCfqXFQ5q09Hia0vm6jkW7Qlul7CtaPGT2h9NDTDWBcXlMP2YBPqnue/F3vD1lvw400/HVwY8F48OH+JK6P6BaACEoaIQj8P6153i7q0Qq3uKr0cNdeWlyNy7TiKyhKBY1KjggkXaumhBmbiISdzqhrv8KcWX+fVPd36yF45jsrBFua6OmoL+hcFM5CA3qV7uqkUpVnYzkxGjxlcWG/6T+B+vT+GT7hpiF6uvAfqxzNBrOkabt8MO18u4g24ac=
+  on:
+    tags: true
+    distributions: sdist bdist_wheel
+    repo: maguowei/starred
+notifications:
+  slack:
+    secure: P+gYlhDfPcAKl5M9TRF739NaRkYgoQ6u6rJjRghH0H1cWQcRfCHzzbQNxAIcxJqWpBUAFTnZMGl1WdrbuV19n/AIoFX7ZZiV4kqSMYKHUrVfGyD1IBdvsvR7/SoMEWB1I6rlrw8yQyrdHigp6A0yg1zUl706TCEVJKDZuqnqeQHBHfwyxrGX8tmCTiPnw1JJQzzpUyppPrwBTjrurOBwUN79eNm/ONxyZGkhJdYGEkXeLZM7FUPMMushmHjv9DzLfa0zoh0szeqm51kDWbtfnJF/upV4pXv/iVx0PDavJ5pnh5eK5FAQInqcEJxS4/xHQrQiq5AlSs8TzSD9wwWedBwspn9+fe2ebCUdAfRgdxQPpS2xOHcgFKQ3YS+v5JDKfjKKGEOnlvfjtq/KgaBHXzMZPOAzFRQDC0m886E7vuKgeYH7QyflCD3es6k42EmXkMgUKIzMYOtWI2tx78OlZ4T/Tyn98f0/wOJUzKkyqQk6jnV6xcK4nDkF6f4aZm1qgJoauItbex9sLDeC1tuFZ14e94cShnqX7VLOMUkhERJN0bOfUiU3P0JEPJRW/UbAWQC5PtFpngcTNWUzc5Jm84L94s+9d3ADK7Y6rrKanKONIQVtFxWu/wa3+a2MAR73FGnz81OAWSdY0+z6WbpiqhNW9oKL+R/olmuwNh8z/fo=
