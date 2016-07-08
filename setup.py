@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 setup(
     name='starred',
-    version='0.3.0',
+    version='1.0.0',
     url='https://github.com/maguowei/starred',
     license='The MIT License (MIT)',
     author='maguowei',
