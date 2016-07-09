@@ -3,7 +3,7 @@ import os
 import sys
 from collections import OrderedDict
 import click
-from github3 import GitHub
+from github3 import GitHub, login
 
 PY2 = sys.version_info[0] == 2
 
@@ -18,16 +18,20 @@ desc = '''# Starred
 @click.command()
 @click.option('--username', default=lambda: os.environ.get('USER', ''), help='GitHub username')
 @click.option('--sort',  is_flag=True, help='sort by language')
-def starred(username, sort):
+@click.option('--token', help='GitHub token')
+def starred(username, sort, token):
     """GitHub starred
 
     make your own awesome lists page by GitHub star!
 
     example:
         starred --username maguowei --sort > README.md
-
     """
-    gh = GitHub()
+
+    if token:
+        gh = login(token=token)
+    else:
+        gh = GitHub()
     stars = gh.starred_by(username)
     click.echo(desc)
     repo_dict = {}
