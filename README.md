@@ -145,7 +145,6 @@ starred --username maguowei --sort > README.md
 * [fetch](https://github.com/github/fetch) - A window.fetch JavaScript polyfill.
 * [AlgorithmVisualizer](https://github.com/parkjs814/AlgorithmVisualizer) - Algorithm Visualizer
 * [bideo.js](https://github.com/rishabhp/bideo.js) - Fullscreen HTML5 Background Video for the Web.
-* [rodeo](https://github.com/yhat/rodeo) - A data science IDE for Python
 * [bash-handbook](https://github.com/denysdovhan/bash-handbook) - :book: For those who wanna learn Bash
 * [favico.js](https://github.com/ejci/favico.js) - Make use of your favicon with badges, images or videos
 * [es6-cheatsheet](https://github.com/DrkSephy/es6-cheatsheet) - ES2015 [ES6] cheatsheet containing tips, tricks, best practices and code snippets
@@ -204,6 +203,7 @@ starred --username maguowei --sort > README.md
 * [salt](https://github.com/saltstack/salt) - Software to automate the management and configuration of any infrastructure or application at scale. Get access to the Salt Open software package repository here:
 * [wdb](https://github.com/Kozea/wdb) - An improbable web debugger through WebSockets
 * [reddit](https://github.com/reddit/reddit) - the code that powers reddit.com
+* [rodeo](https://github.com/yhat/rodeo) - A data science IDE for Python
 * [robobrowser](https://github.com/jmcarp/robobrowser) -
 * [splinter](https://github.com/cobrateam/splinter) - splinter - python test framework for web applications
 * [tflearn](https://github.com/tflearn/tflearn) - Deep learning library featuring a higher-level API for TensorFlow.
