@@ -34,7 +34,7 @@ def starred(username, sort):
 
     for s in stars:
         language = s.language or 'Others'
-        description = s.description.encode('utf-8') if PY2 else s.description
+        description = (s.description or '').encode('utf-8') if PY2 else s.description
 
         if language not in repo_dict:
             repo_dict[language] = []
