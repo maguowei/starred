@@ -17,16 +17,17 @@ desc = '''# Starred
 @click.command()
 @click.option('--username', default=lambda: os.environ.get('USER', ''), help='GitHub username')
 @click.option('--sort',  is_flag=True, help='sort by language')
-def starred(username, sort):
+@click.option('--token', default=None, help='GitHub token')
+def starred(username, sort, token):
     """GitHub starred
 
     make your own awesome lists page by GitHub star!
 
     example:
         starred --username maguowei --sort > README.md
-
     """
-    gh = GitHub()
+
+    gh = GitHub(token=token)
     stars = gh.starred_by(username)
     click.echo(desc)
     repo_dict = {}
