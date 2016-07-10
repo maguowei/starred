@@ -1,11 +1,10 @@
 #!/usr/bin/env python
+
 import os
-import sys
 from collections import OrderedDict
 import click
 from github3 import GitHub
 
-PY2 = sys.version_info[0] == 2
 
 desc = '''# Starred
 
@@ -35,8 +34,6 @@ def starred(username, sort):
     for s in stars:
         language = s.language or 'Others'
         description = s.description or ''
-        if PY2:
-            description = description.encode('utf-8')
 
         if language not in repo_dict:
             repo_dict[language] = []
@@ -47,14 +44,14 @@ def starred(username, sort):
         repo_dict = OrderedDict(sorted(repo_dict.items(), key=lambda l: l[0]))
 
     for language in repo_dict.keys():
-        data = '    - [{}](#{})'.format(language, language.lower())
+        data = u'    - [{}](#{})'.format(language, language.lower())
         click.echo(data)
     click.echo('')
 
     for language in repo_dict:
         click.echo('## %s\n' % language)
         for repo in repo_dict[language]:
-            data = '* [{}]({}) - {}'.format(*repo)
+            data = u'* [{}]({}) - {}'.format(*repo)
             click.echo(data)
         click.echo('')
 
