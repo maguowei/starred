@@ -1,14 +1,12 @@
 """
-Starred
------
+Install
+```````
 
-Easy to Setup
-`````````````
-
-Install:
 .. code:: bash
-    $ pip install starred
-    $ starred --username maguowei --sort > README.md
+
+  pip install starred
+
+  starred --username maguowei --sort > README.md
 
 Links
 `````
