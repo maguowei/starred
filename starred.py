@@ -22,13 +22,13 @@ html_escape_table = {
 
 def html_escape(text):
     """Produce entities within text."""
-    return "".join(html_escape_table.get(c,c) for c in text)
+    return "".join(html_escape_table.get(c, c) for c in text)
 
 
 @click.command()
 @click.option('--username', default=lambda: os.environ.get('USER', ''), help='GitHub username')
 @click.option('--sort',  is_flag=True, help='sort by language')
-@click.option('--token', default=None, help='GitHub token')
+@click.option('--token', default=lambda: os.environ.get('GITHUB_TOKEN', ''), help='GitHub token')
 def starred(username, sort, token):
     """GitHub starred
 
