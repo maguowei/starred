@@ -14,6 +14,17 @@ desc = '''# Starred
 '''
 
 
+html_escape_table = {
+    ">": "&gt;",
+    "<": "&lt;",
+}
+
+
+def html_escape(text):
+    """Produce entities within text."""
+    return "".join(html_escape_table.get(c,c) for c in text)
+
+
 @click.command()
 @click.option('--username', default=lambda: os.environ.get('USER', ''), help='GitHub username')
 @click.option('--sort',  is_flag=True, help='sort by language')
@@ -34,7 +45,7 @@ def starred(username, sort, token):
 
     for s in stars:
         language = s.language or 'Others'
-        description = s.description or ''
+        description = html_escape(s.description) if s.description else ''
 
         if language not in repo_dict:
             repo_dict[language] = []
