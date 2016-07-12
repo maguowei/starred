@@ -22,7 +22,7 @@ from setuptools import find_packages, setup
 
 setup(
     name='starred',
-    version='1.0.3',
+    version='1.0.4',
     url='https://github.com/maguowei/starred',
     license='The MIT License (MIT)',
     author='maguowei',
