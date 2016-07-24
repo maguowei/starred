@@ -11,6 +11,12 @@ starred --username maguowei --sort > README.md
 
 
 ## Demo
+
+```bash
+export GITHUB_TOKEN=yourtoken
+# automatically create the repository
+starred --repository=awesome-stars --sort
+```
 * [awesome-stars](https://github.com/maguowei/awesome-stars)
 
 
