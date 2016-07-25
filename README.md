@@ -5,16 +5,16 @@
 
 
 ## Install
-```bash
-pip install starred
-starred --username maguowei --sort > README.md
+```
+$ pip install starred
+$ starred --username maguowei --sort > README.md
 ```
 
 ## Usage
 ```
-# starred --help
+$ starred --help
 
-Usage: starred.py [OPTIONS]
+Usage: starred [OPTIONS]
 
   GitHub starred
 
@@ -27,6 +27,7 @@ Options:
   --token TEXT       GitHub token
   --sort             sort by language
   --repository TEXT  repository name
+  --version          Show the version and exit.
   --help             Show this message and exit.
 ```
 

@@ -33,6 +33,7 @@ def html_escape(text):
 @click.option('--token', envvar='GITHUB_TOKEN', help='GitHub token')
 @click.option('--sort',  is_flag=True, help='sort by language')
 @click.option('--repository', default='', help='repository name')
+@click.version_option(version='1.1.0', prog_name='starred')
 def starred(username, token, sort, repository):
     """GitHub starred
 
