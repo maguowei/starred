@@ -16,7 +16,7 @@ Links
 """
 
 
-from setuptools import find_packages, setup
+from setuptools import setup
 
 setup(
     name='starred',
@@ -25,7 +25,7 @@ setup(
     license='The MIT License (MIT)',
     author='maguowei',
     author_email='imaguowei@gmail.com',
-    description='GitHub starred: make your own awesome lists page by GitHub star!',
+    description='creating your own Awesome List used GitHub stars!',
     long_description=__doc__,
     py_modules=['starred'],
     platforms='any',
