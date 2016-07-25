@@ -55,7 +55,7 @@ def starred(username, token, sort, repository):
 
     for s in stars:
         language = s.language or 'Others'
-        description = html_escape(s.description) if s.description else ''
+        description = html_escape(s.description).replace('\n', '') if s.description else ''
 
         if language not in repo_dict:
             repo_dict[language] = []
