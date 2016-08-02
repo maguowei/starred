@@ -72,7 +72,7 @@ def starred(username, token, sort, repository):
     click.echo('')
 
     for language in repo_dict:
-        click.echo('## %s\n' % language)
+        click.echo('## {}'.format(language.replace('#', '# #')))
         for repo in repo_dict[language]:
             data = u'* [{}]({}) - {}'.format(*repo)
             click.echo(data)
