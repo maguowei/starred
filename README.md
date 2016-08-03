@@ -37,7 +37,7 @@ Options:
 ```bash
 export GITHUB_TOKEN=yourtoken
 # automatically create the repository
-starred --username yourname --repository awesome-stars --sort
+starred --username yourusername --repository awesome-stars --sort
 ```
 * [awesome-stars](https://github.com/maguowei/awesome-stars)
 
