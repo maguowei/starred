@@ -53,3 +53,9 @@ starred --username yourname --repository awesome-stars --sort
     * For unauthenticated requests, the rate limit is 60 requests per hour. 
     see [Rate Limiting](https://developer.github.com/v3/#rate-limiting)
     * The token must be passed together when you want to automatically create the repository.
+    
+3. Install the master branch version
+```bash
+pip install -e git+https://github.com/maguowei/starred#egg=starred
+    
+```
