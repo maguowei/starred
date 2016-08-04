@@ -20,7 +20,7 @@ from setuptools import setup
 
 setup(
     name='starred',
-    version='1.2.1',
+    version='1.2.2',
     url='https://github.com/maguowei/starred',
     license='MIT',
     author='maguowei',
