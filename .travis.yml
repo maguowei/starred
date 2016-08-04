@@ -16,7 +16,8 @@ deploy:
   on:
     tags: true
     repo: maguowei/starred
-  distributions: bdist_wheel
+    python: "3.5"
+  distributions: sdist bdist_wheel
 notifications:
   email: false
   slack:
