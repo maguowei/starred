@@ -27,6 +27,7 @@ Options:
   --token TEXT       GitHub token
   --sort             sort by language
   --repository TEXT  repository name
+  --message TEXT     commit message
   --version          Show the version and exit.
   --help             Show this message and exit.
 ```
@@ -35,9 +36,9 @@ Options:
 ## Demo
 
 ```bash
-export GITHUB_TOKEN=yourtoken
 # automatically create the repository
-starred --username yourname --repository awesome-stars --sort
+$ export GITHUB_TOKEN=yourtoken
+$ starred --username yourname --repository awesome-stars --sort
 ```
 * [awesome-stars](https://github.com/maguowei/awesome-stars)
 
@@ -56,6 +57,6 @@ starred --username yourname --repository awesome-stars --sort
     
 3. Install the master branch version
 ```bash
-pip install -e git+https://github.com/maguowei/starred#egg=starred
+$ pip install -e git+https://github.com/maguowei/starred#egg=starred
     
 ```
