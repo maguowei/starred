@@ -1,22 +1,9 @@
-"""
-Install
-```````
-
-.. code:: bash
-
-  pip install starred
-
-  starred --username maguowei --sort > README.md
-
-Links
-`````
-
-* `website <https://github.com/maguowei/starred>`_
-
-"""
-
-
 from setuptools import setup
+
+
+with open('README.rst') as f:
+    long_description = f.read()
+
 
 setup(
     name='starred',
@@ -27,7 +14,7 @@ setup(
     author_email='imaguowei@gmail.com',
     keywords='GitHub starred',
     description='creating your own Awesome List used GitHub stars!',
-    long_description=__doc__,
+    long_description=long_description,
     py_modules=['starred'],
     platforms='any',
     install_requires=[
