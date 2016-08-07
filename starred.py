@@ -24,7 +24,7 @@ license_ = '''
 (https://creativecommons.org/ublicdomain/zero/1.0/)
 
 To the extent possible under law, [Sindre Sorhus](http://sindresorhus.com)\
-has waived all copyright and related or neighboring rights to this work.
+ has waived all copyright and related or neighboring rights to this work.
 '''
 
 html_escape_table = {
