@@ -7,7 +7,7 @@ with open('README.rst') as f:
 
 setup(
     name='starred',
-    version='1.2.3',
+    version='1.3.0',
     url='https://github.com/maguowei/starred',
     license='MIT',
     author='maguowei',
