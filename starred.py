@@ -78,7 +78,7 @@ def starred(username, token, sort, repository, message):
         repo_dict = OrderedDict(sorted(repo_dict.items(), key=lambda l: l[0]))
 
     for language in repo_dict.keys():
-        data = u'  - [{}](#{})'.format(language, language.lower())
+        data = u'  - [{}](#{})'.format(language, '-'.join(language.lower().split()))
         click.echo(data)
     click.echo('')
 
