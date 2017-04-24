@@ -18,7 +18,7 @@ setup(
     py_modules=['starred'],
     platforms='any',
     install_requires=[
-        'click==6.6',
+        'click==6.7',
         'github3.py==1.0.0a4',
     ],
     entry_points={
