@@ -19,7 +19,7 @@ setup(
     platforms='any',
     install_requires=[
         'click==6.7',
-        'github3.py==1.0.0a4',
+        'github3.py==1.1.0',
     ],
     entry_points={
         'console_scripts': [
@@ -36,8 +36,7 @@ setup(
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.3',
-        'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
     ],
 )

@@ -101,5 +101,6 @@ def starred(username, token, sort, repository, message):
             rep.create_file('README.md', 'starred initial commit', file.getvalue())
         click.launch(rep.html_url)
 
+
 if __name__ == '__main__':
     starred()

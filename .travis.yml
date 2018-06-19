@@ -1,17 +1,16 @@
 language: python
 python:
-  - "2.7"
-  - "3.3"
-  - "3.4"
-  - "3.5"
+- '2.7'
+- '3.5'
+- '3.6'
 env:
-  secure: JtLoWLPGF6c4DgNRvzGU6GMPc5Y1ghdVr4FxjDMQJwc4VPN4TU3zJjtdUSrBmFDPX9/trg1nEc8nrrs+JcoW4JxHEMDza1bLEd6YmCfI5k9J4SydZYpny3Y5BXpqeRdtoDQCvZQ6wVk9R+honptysKqwrb4ZKuEpnRWW6UlNmlgJiW1alZXhxVPhk8La/h4qtkVf3dhE9XZqzS4UrmdJYif/5BFyrQlBGJtg0lkuTihT3RBJ85xV3ymsGVFYi/8bXlXXWvS410qSdoZTesaD7GXn13dbi/ApNOGiTUg08riXlEf/Alg5e58FfvLNlAH/GS0sXDTJEUAI5eJU5gXPWXvTArWMB2uqkSwMDAMecVQRkNB1e1EDOX7qezhc6qqz93fVmkixi0AWmzdj0C2C/7ceBdcYLGpGauu6sLirLTykY+QkN7MiOcat+QJu+kaUi7I155KDLosGPojM8XXZQDq1hOSJPzmiHeEv9zdkheiN0Ibcj1QJPNRf5B9g9bdLuhNBu+LaRoxFLYjV/7akuAcMEGaF6/LNYH8YJU+Ti/ljq7jX1052hwf1K1TSdKjp/H3E00mAOpI4HimDvYRx4H1WZBupL+MtXsP9VBiCeFoHFU9kFREFEpTXDSvjU4LDMN7ftfqpMv60CqyB3zRPbwuJ1BSJwd006JBtWK37mCM=
+  secure: SEuqwJGjetaPwakFQ7tIrjvY0RGrSDYKDmlDHr8m4RfWa8eiBibQ2USfUvffv39Lg2ZnOFj2sagAMfJZRsdrQrZIXirUj/LT17ei8kw+ObrcCyECcL9HAFFUYG/utitnUNlxKa2l67lQ2FLc7BaIBZOrw6Bem/SCkWRnWSfQaDdl0Da8cAbR4JfzeBLqFeT4GyErf6gKJx1yXXHNF6rzj/ehL2MtnwkdxEkj9zexASCu8gCXZXQSxhBRzTGI3BzoFeEATqY8NzzpBbFjMHCg00QDPTEjOZ1Oz1uMko/g1FgjxQeXoZ5M3FSRr/VXHxAnxDKdeCL3e99ZlwQPHLyib+dJxCfVnj7YdzSNdvFb8OnBNPouMBPClJ5P75dVAuT6zPkc2trAkxpz5c/qUCuDKGUEetivYuG7BAULWh6xzq4GyQvMcioMUD+2ABmAtVhANOtyywP3DhWabr8xPPXUl8zBnXjq57BCeSCVUzq/SnDhEUs0PdSr71vA3kG/l06dJUYfaF7VTSTD4MSV9wnWqnjkihklY0SPG8WdaeNpre7t0CWeLNwALTAKsxVrXOLF+eGNeCGfwBqm+Y9DSuy4H/6w4psd5fkC5N+F/KzhyG3hHPWMWv38tFgroLgxcub6NPQ4wC3C5c8b5OcYDU5SHx4cCKg1EYgyiQeMVXjSQ4g=
 install:
-  - pip install -U pycodestyle
-  - python setup.py install
+- pip install -U pycodestyle
+- python setup.py install
 script:
-  - pycodestyle --max-line-length=100 starred.py
-  - starred --username maguowei --sort
+- pycodestyle --max-line-length=100 starred.py
+- starred --username maguowei --sort
 deploy:
   provider: pypi
   user: maguowei
@@ -20,7 +19,7 @@ deploy:
   on:
     tags: true
     repo: maguowei/starred
-    python: "3.5"
+    python: '3.6'
   distributions: sdist bdist_wheel
 notifications:
   email: false
