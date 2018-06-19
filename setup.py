@@ -19,7 +19,7 @@ setup(
     platforms='any',
     install_requires=[
         'click==6.7',
-        'github3.py==1.0.0a4',
+        'github3.py==1.1.0',
     ],
     entry_points={
         'console_scripts': [
