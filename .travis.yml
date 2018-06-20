@@ -21,6 +21,7 @@ deploy:
     repo: maguowei/starred
     python: '3.6'
   distributions: sdist bdist_wheel
+  skip_cleanup: true
 notifications:
   email: false
   slack:
