@@ -45,7 +45,7 @@ def html_escape(text):
 @click.option('--sort',  is_flag=True, help='sort by language')
 @click.option('--repository', default='', help='repository name')
 @click.option('--message', default='update stars', help='commit message')
-@click.version_option(version='2.0.2', prog_name='starred')
+@click.version_option(version='2.0.3', prog_name='starred')
 def starred(username, token, sort, repository, message):
     """GitHub starred
 
