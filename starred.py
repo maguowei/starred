@@ -6,6 +6,7 @@ from io import BytesIO
 from collections import OrderedDict
 import click
 from github3 import GitHub
+from github3.exceptions import NotFoundError
 
 
 desc = '''# Awesome Stars [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d730\
@@ -92,11 +93,11 @@ def starred(username, token, sort, repository, message):
     click.echo(license_.format(username=username))
 
     if file:
-        rep = gh.repository(username, repository)
-        if rep:
+        try:
+            rep = gh.repository(username, repository)
             readme = rep.readme()
             readme.update(message, file.getvalue())
-        else:
+        except NotFoundError:
             rep = gh.create_repository(repository, 'A curated list of my GitHub stars!')
             rep.create_file('README.md', 'starred initial commit', file.getvalue())
         click.launch(rep.html_url)
