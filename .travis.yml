@@ -9,7 +9,7 @@ install:
 - pip install -U pycodestyle
 - python setup.py install
 script:
-- pycodestyle --max-line-length=100 starred.py
+- pycodestyle --max-line-length=100 starred
 - starred --username maguowei --sort
 deploy:
   provider: pypi
