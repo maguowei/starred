@@ -8,18 +8,19 @@ with open('README.rst') as f:
 setup(
     name='starred',
     version=VERSION,
-    url='https://github.com/maguowei/starred',
+    url='https://github.com/1132719438/starred',
     license='MIT',
-    author='maguowei',
-    author_email='imaguowei@gmail.com',
+    author='1132719438',
+    author_email='lijinpeng1132@gmail.com',
     keywords='GitHub starred',
     description='creating your own Awesome List used GitHub stars!',
     long_description=long_description,
     packages=find_packages(),
     platforms='any',
     install_requires=[
-        'click==7.0',
-        'github3.py==1.2.0',
+        'click>=7.0',
+        'github3.py>=1.2.0',
+        'terminaltables>=3.1.0'
     ],
     entry_points={
         'console_scripts': [

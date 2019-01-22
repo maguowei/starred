@@ -1,24 +1,25 @@
 Starred
 =======
 
-.. image:: https://travis-ci.org/maguowei/starred.svg?branch=master
-    :target: https://travis-ci.org/maguowei/starred
+.. image:: https://travis-ci.org/1132719438/starred.svg?branch=master
+    :target: https://travis-ci.org/1132719438/starred
     :alt: Travis CI Status
 
-.. image:: https://requires.io/github/maguowei/starred/requirements.svg?branch=master
-     :target: https://requires.io/github/maguowei/starred/requirements/?branch=master
+.. image:: https://requires.io/github/1132719438/starred/requirements.svg?branch=master
+     :target: https://requires.io/github/1132719438/starred/requirements/?branch=master
      :alt: Requirements Status
 
 Install
 -------
 
+starred requires Python version 3.x
+
 .. code:: bash
 
-    $ pip install starred
-    $ starred --username maguowei --sort > README.md
+    $ git clone https://github.com/1132719438/starred
+    $ pip3 install ./starred
+    $ starred --username 1132719438 --output README.md
 
-    starred requires Python version 3.x, If you require Python 2.x support
-    $ pip install starred==2.0.3
 
 Usage
 -----
@@ -33,14 +34,17 @@ Usage
 
       creating your own Awesome List used GitHub stars!
 
-      example:     starred --username maguowei --sort > README.md
+      example:     starred --username 1132719438 --output README.md
 
     Options:
       --username TEXT    GitHub username
       --token TEXT       GitHub token
-      --sort             sort by language
+      --sort             sort by language with stars, date or name
       --repository TEXT  repository name
       --message TEXT     commit message
+      --output TEXT      output file name with path(print to stdout if not set)
+      --launch           launch to Github after update repository
+      --type             output repository information in table or list
       --version          Show the version and exit.
       --help             Show this message and exit.
 
@@ -50,10 +54,10 @@ Demo
 .. code:: bash
 
     # automatically create the repository
-    $ export GITHUB_TOKEN=yourtoken
-    $ starred --username yourname --repository awesome-stars --sort
+    $ export GITHUB_TOKEN=<yourtoken>
+    $ starred --username <yourname> --repository <repositoryname>
 
--  `awesome-stars <https://github.com/maguowei/awesome-stars>`__
+-  `Stars <https://github.com/1132719438/Stars>`__
 
 FAQ
 ---
@@ -71,8 +75,3 @@ FAQ
    -  The token must be passed together when you want to automatically
       create the repository.
 
-#. Install the master branch version
-
-   .. code:: bash
-
-      $ pip install -e git+https://github.com/maguowei/starred#egg=starred
