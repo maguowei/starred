@@ -17,7 +17,7 @@ Install
     $ pip install starred
     $ starred --username maguowei --sort > README.md
 
-    starred requires Python version 3.x, If you require Python 2.x support
+    # starred requires Python version 3.x, If you require Python 2.x support
     $ pip install starred==2.0.3
 
 Usage
