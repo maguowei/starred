@@ -5,10 +5,6 @@ Starred
     :target: https://travis-ci.org/maguowei/starred
     :alt: Travis CI Status
 
-.. image:: https://requires.io/github/maguowei/starred/requirements.svg?branch=master
-     :target: https://requires.io/github/maguowei/starred/requirements/?branch=master
-     :alt: Requirements Status
-
 Install
 -------
 
