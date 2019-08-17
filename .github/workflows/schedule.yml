@@ -1,0 +1,14 @@
+name: update awesome-stars
+on: [push]
+jobs:
+  awesome-stars:
+    name: update awesome-stars
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: setup
+      run: python3.7 setup.py install
+    - name: update
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: starred --username maguowei --repository awesome-stars --sort
