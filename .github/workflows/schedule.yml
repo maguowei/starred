@@ -1,5 +1,7 @@
 name: update awesome-stars
-on: [push]
+on:
+  schedules:
+  - cron: 30 0 * * *
 jobs:
   awesome-stars:
     name: update awesome-stars
@@ -7,8 +9,10 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: setup
-      run: python3 setup.py install
+      run: |
+        sudo pip3 install setuptools
+        sudo python3 setup.py install
     - name: update
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: starred --username maguowei --repository awesome-stars --sort
+        GITHUB_ACTION_TOKEN: ${{ secrets.GITHUB_ACTION_TOKEN }}
+      run: starred --username maguowei --repository awesome-stars --sort --token ${GITHUB_ACTION_TOKEN} --message 'stars update by github actions cron'
