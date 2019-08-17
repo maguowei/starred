@@ -7,7 +7,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: setup
-      run: python3.7 setup.py install
+      run: python3 setup.py install
     - name: update
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
