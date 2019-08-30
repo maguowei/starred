@@ -1,7 +1,10 @@
 from setuptools import setup, find_packages
+from os import path
 from starred import VERSION
 
-with open('README.rst') as f:
+
+this_directory = path.abspath(path.dirname(__file__))
+with open(path.join(this_directory, 'README.md')) as f:
     long_description = f.read()
 
 
@@ -15,6 +18,7 @@ setup(
     keywords='GitHub starred',
     description='creating your own Awesome List used GitHub stars!',
     long_description=long_description,
+    long_description_content_type='text/markdown',
     packages=find_packages(),
     platforms='any',
     install_requires=[
