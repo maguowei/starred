@@ -1,6 +1,6 @@
 # Starred
 
-[![github workflow](https://github.com/maguowei/iaas/workflows/webhook/badge.svg)](https://github.com/maguowei/iaas/actions)
+[![github workflow](https://github.com/maguowei/starred/workflows/workflow/badge.svg)](https://github.com/maguowei/starred/actions)
 
 ## Install
 
