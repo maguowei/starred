@@ -21,7 +21,7 @@ setup(
     long_description_content_type='text/markdown',
     packages=find_packages(),
     platforms='any',
-    python_requires='>=3.5',
+    python_requires='>=3.6',
     install_requires=[
         'click==7.0',
         'github3.py==1.3.0',
