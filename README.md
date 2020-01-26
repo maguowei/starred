@@ -1,6 +1,7 @@
 # Starred
 
 [![github workflow](https://github.com/maguowei/starred/workflows/ci/badge.svg)](https://github.com/maguowei/starred/actions)
+![Upload Python Package](https://github.com/maguowei/starred/workflows/Upload%20Python%20Package/badge.svg)
 
 ## Install
 
