@@ -43,6 +43,7 @@ $ starred --username yourname --repository awesome-stars --sort
 ```
 
 - [`maguowei/awesome-stars`](https://github.com/maguowei/awesome-stars)
+- [update awesome-stars every day by GitHub Action](https://github.com/maguowei/awesome-stars/blob/master/.github/workflows/schedules.yml) the example with GitHub Action
 
 ## FAQ
 
