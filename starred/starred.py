@@ -74,7 +74,7 @@ def starred(username, token, sort, repository, message):
         description = html_escape(s.description).replace('\n', '') if s.description else ''
         if language not in repo_dict:
             repo_dict[language] = []
-        repo_dict[language].append([s.name, s.html_url, description.strip()])
+        repo_dict[language].append([s.full_name, s.html_url, description.strip()])
 
     if sort:
         repo_dict = OrderedDict(sorted(repo_dict.items(), key=lambda l: l[0]))
