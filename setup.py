@@ -24,7 +24,7 @@ setup(
     python_requires='>=3.6',
     install_requires=[
         'click==7.1.2',
-        'github3.py==1.3.0',
+        'github3.py==2.0.0',
     ],
     entry_points={
         'console_scripts': [
