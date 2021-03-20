@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "starred"
+version = "3.1.0"
+description = ""
+authors = ["maguowei <imaguowei@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.7"
+click = "^7.1.2"
+"github3.py" = "^2.0.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
