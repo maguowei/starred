@@ -46,8 +46,9 @@ def html_escape(text):
 @click.option('--sort',  is_flag=True, help='sort by language')
 @click.option('--repository', default='', help='repository name')
 @click.option('--message', default='update stars', help='commit message')
+@click.option('--private', is_flag=True, default=False, help='include private repos')
 @click.version_option(version=VERSION, prog_name='starred')
-def starred(username, token, sort, repository, message):
+def starred(username, token, sort, repository, message, private):
     """GitHub starred
 
     creating your own Awesome List used GitHub stars!
@@ -70,6 +71,10 @@ def starred(username, token, sort, repository, message):
     repo_dict = {}
 
     for s in stars:
+        # skip private repos if --private is not set
+        if s.private and not private:
+            continue
+
         language = s.language or 'Others'
         description = html_escape(s.description).replace('\n', '') if s.description else ''
         if language not in repo_dict:
