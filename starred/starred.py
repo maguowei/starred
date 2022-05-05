@@ -5,9 +5,8 @@ import sys
 from io import BytesIO
 from collections import OrderedDict
 import click
-from github3 import GitHub
-from github3.exceptions import NotFoundError
-from starred import VERSION
+from . import VERSION
+from .github import get_user_starred_by_username
 
 
 desc = '''# Awesome Stars [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d730\
@@ -64,8 +63,8 @@ def starred(username, token, sort, repository, message):
     else:
         file = None
 
-    gh = GitHub(token=token)
-    stars = gh.starred_by(username)
+    stars = get_user_starred_by_username(token, username)
+    
     click.echo(desc)
     repo_dict = {}
 
@@ -74,7 +73,7 @@ def starred(username, token, sort, repository, message):
         description = html_escape(s.description).replace('\n', '') if s.description else ''
         if language not in repo_dict:
             repo_dict[language] = []
-        repo_dict[language].append([s.full_name, s.html_url, description.strip()])
+        repo_dict[language].append([s.name, s.url, description.strip()])
 
     if sort:
         repo_dict = OrderedDict(sorted(repo_dict.items(), key=lambda l: l[0]))

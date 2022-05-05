@@ -23,9 +23,8 @@ setup(
     platforms='any',
     python_requires='>=3.6',
     install_requires=[
-        'setuptools-rust==0.12.1',
-        'click==7.1.2',
-        'github3.py==1.3.0',
+        'click==8.1.3',
+        'requests==2.27.1',
     ],
     entry_points={
         'console_scripts': [
@@ -44,5 +43,6 @@ setup(
         'Programming Language :: Python :: 3.7',
         'Programming Language :: Python :: 3.8',
         'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.10',
     ],
 )
