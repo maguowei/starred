@@ -69,7 +69,7 @@ def starred(username, token, sort, repository, message, private):
 
     for s in stars:
         # skip private repos if --private is not set
-        if s.private and not private:
+        if s.is_private and not private:
             continue
 
         language = s.language or 'Others'
