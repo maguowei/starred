@@ -48,6 +48,9 @@ def get_user_starred_by_username(token, username, query=None):
     if query is None:
         query = DEFAULT_QUERY.format(username=username, after='')
     r = requests.post('https://api.github.com/graphql', json={'query': query}, headers=headers)
+    if r.status_code != 200:
+        raise Exception(f'Query failed to run by returning code: {r.status_code}, query: {query}, result: {r.json()}')
+
     data = r.json()
     has_next = data['data']['user']['starredRepositories']['pageInfo']['hasNextPage']
     end_cursor = data['data']['user']['starredRepositories']['pageInfo']['endCursor']
