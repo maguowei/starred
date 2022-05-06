@@ -22,7 +22,7 @@ jobs:
         pip install -U pycodestyle
         python setup.py install
     - name: pycodestyle
-      run: pycodestyle --max-line-length=100 starred
+      run: pycodestyle --max-line-length=120 starred
     - name: test
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

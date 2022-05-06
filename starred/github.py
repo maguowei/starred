@@ -3,7 +3,7 @@ import requests
 DEFAULT_QUERY = """
 {{
   user(login: "{username}") {{
-    starredRepositories(first: 100, after: "{after}", orderBy: {{direction: DESC, field: STARRED_AT}}){{
+    starredRepositories(first: 100, after: "{after}", orderBy: {{direction: DESC, field: STARRED_AT}}) {{
       totalCount
       nodes {{
         name
@@ -32,6 +32,7 @@ DEFAULT_QUERY = """
 }}
 """
 
+
 class Repository:
     def __init__(self, name, description, language, url, stargazer_count):
         self.name = name
@@ -54,7 +55,7 @@ def get_user_starred_by_username(token, username, query=None):
 
     for repo in data['data']['user']['starredRepositories']['nodes']:
         name = repo['nameWithOwner']
-        description = repo['description']
+        description = repo['description'][:30]
         language = repo['languages']['edges'][0]['node']['name'] if repo['languages']['edges'] else ''
         url = repo['url']
         stargazer_count = repo['stargazerCount']

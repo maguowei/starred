@@ -63,7 +63,7 @@ def starred(username, token, sort, repository, message):
         file = None
 
     stars = get_user_starred_by_username(token, username)
-    
+
     click.echo(desc)
     repo_dict = {}
 
