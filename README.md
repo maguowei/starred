@@ -30,6 +30,7 @@ Options:
   --sort             sort by language
   --repository TEXT  repository name
   --message TEXT     commit message
+  --private          include private repos
   --version          Show the version and exit.
   --help             Show this message and exit.
 ```
