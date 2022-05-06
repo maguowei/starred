@@ -8,7 +8,7 @@
 ```bash
 
 $ pip install starred
-$ starred --username maguowei --sort > README.md
+$ starred --username maguowei --token=xxxxxxxx --sort > README.md
 ```
 
 ## Usage

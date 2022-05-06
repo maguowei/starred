@@ -6,7 +6,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     strategy:
-      max-parallel: 3
+      max-parallel: 4
       matrix:
         python-version: [3.7, 3.8, 3.9, 3.10]
     steps:
@@ -24,7 +24,7 @@ jobs:
       run: pycodestyle --max-line-length=120 starred
     - name: test
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_ACTION_TOKEN }}
       run: starred --username maguowei --token ${GITHUB_TOKEN} --sort
     
     # - name: Lint with flake8
