@@ -3,14 +3,17 @@ import requests
 DEFAULT_QUERY = """
 {{
   user(login: "{username}") {{
-    starredRepositories(first: 100, after: "{after}"){{
+    starredRepositories(first: 100, after: "{after}", orderBy: {{direction: DESC, field: STARRED_AT}}){{
       totalCount
       nodes {{
         name
+        nameWithOwner
         description
-        stargazerCount
         url
+        stargazerCount
         forkCount
+        pushedAt
+        updatedAt
         languages(first: 1, orderBy: {{field: SIZE, direction: DESC}}) {{
           edges {{
             node {{
@@ -19,20 +22,6 @@ DEFAULT_QUERY = """
             }}
           }}
         }}
-        nameWithOwner
-        pushedAt
-        releases(orderBy: {{field: CREATED_AT, direction: ASC}}, last: 1) {{
-          edges {{
-            node {{
-              name
-              tagName
-              createdAt
-              updatedAt
-              url
-            }}
-          }}
-        }}
-        updatedAt
       }}
       pageInfo {{
         endCursor

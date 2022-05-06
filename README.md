@@ -18,20 +18,20 @@ $ starred --help
 
 Usage: starred [OPTIONS]
 
-    GitHub starred
+  GitHub starred
 
-    creating your own Awesome List used GitHub stars!
+  creating your own Awesome List used GitHub stars!
 
-    example:     starred --username maguowei --sort > README.md
+  example:     starred --username maguowei --token=xxxxxxxx --sort > README.md
 
 Options:
-    --username TEXT    GitHub username
-    --token TEXT       GitHub token
-    --sort             sort by language
-    --repository TEXT  repository name
-    --message TEXT     commit message
-    --version          Show the version and exit.
-    --help             Show this message and exit.
+  --username TEXT    GitHub username  [required]
+  --token TEXT       GitHub token  [required]
+  --sort             sort by language
+  --repository TEXT  repository name
+  --message TEXT     commit message
+  --version          Show the version and exit.
+  --help             Show this message and exit.
 ```
 
 ## Demo
@@ -51,16 +51,7 @@ $ starred --username yourname --repository awesome-stars --sort
 
    link: [Github Personal access tokens](https://github.com/settings/tokens)
 
-2. Why do I need a token?
-
-   -  For unauthenticated requests, the rate limit is 60 requests per
-      hour.
-      see [Github Api Rate
-      Limiting](https://developer.github.com/v3/#rate-limiting)
-   -  The token must be passed together when you want to automatically
-      create the repository.
-
-3. Install the master branch version
+2. Install the master branch version
 
     ```bash
     $ pip install -e git+https://github.com/maguowei/starred#egg=starred

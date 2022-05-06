@@ -5,6 +5,8 @@ import sys
 from io import BytesIO
 from collections import OrderedDict
 import click
+from github3 import GitHub
+from github3.exceptions import NotFoundError
 from . import VERSION
 from .github import get_user_starred_by_username
 
@@ -40,8 +42,8 @@ def html_escape(text):
 
 
 @click.command()
-@click.option('--username', envvar='USER', help='GitHub username')
-@click.option('--token', envvar='GITHUB_TOKEN', help='GitHub token')
+@click.option('--username', envvar='USER', required=True, help='GitHub username')
+@click.option('--token', envvar='GITHUB_TOKEN', required=True, help='GitHub token')
 @click.option('--sort',  is_flag=True, help='sort by language')
 @click.option('--repository', default='', help='repository name')
 @click.option('--message', default='update stars', help='commit message')
@@ -52,12 +54,9 @@ def starred(username, token, sort, repository, message):
     creating your own Awesome List used GitHub stars!
 
     example:
-        starred --username maguowei --sort > README.md
+        starred --username maguowei --token=xxxxxxxx --sort > README.md
     """
     if repository:
-        if not token:
-            click.secho('Error: create repository need set --token', fg='red')
-            return
         file = BytesIO()
         sys.stdout = file
     else:
@@ -93,6 +92,7 @@ def starred(username, token, sort, repository, message):
     click.echo(license_.format(username=username))
 
     if file:
+        gh = GitHub(token=token)
         try:
             rep = gh.repository(username, repository)
             readme = rep.readme()
