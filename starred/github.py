@@ -58,7 +58,7 @@ def get_user_starred_by_username(token, username, query=None):
 
     for repo in data['data']['user']['starredRepositories']['nodes']:
         name = repo['nameWithOwner']
-        description = repo['description'][:30] if repo['description'] else ''
+        description = repo['description'][:200] if repo['description'] else ''
         language = repo['languages']['edges'][0]['node']['name'] if repo['languages']['edges'] else ''
         url = repo['url']
         stargazer_count = repo['stargazerCount']
