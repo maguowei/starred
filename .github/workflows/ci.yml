@@ -24,7 +24,7 @@ jobs:
       run: pycodestyle --max-line-length=120 starred
     - name: test
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_ACTION_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: starred --username maguowei --token ${GITHUB_TOKEN} --sort
     
     # - name: Lint with flake8
