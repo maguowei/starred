@@ -24,6 +24,14 @@ QUERY = gql("""
                 }
               }
             }
+            repositoryTopics(first: 100) {
+              nodes {
+                topic {
+                  name
+                  stargazerCount
+                }
+              }
+            }
           }
           pageInfo {
             endCursor
@@ -37,13 +45,14 @@ QUERY = gql("""
 
 
 class Repository:
-    def __init__(self, name, description, language, url, stargazer_count, is_private):
+    def __init__(self, name, description, language, url, stargazer_count, is_private, topics):
         self.name = name
         self.description = description
         self.language = language
         self.url = url
         self.stargazer_count = stargazer_count
         self.is_private = is_private
+        self.topics = topics
 
 
 class GitHubGQL:
@@ -69,7 +78,8 @@ class GitHubGQL:
             url = repo['url']
             stargazer_count = repo['stargazerCount']
             is_private = repo['isPrivate']
-            items.append(Repository(name, description, language, url, stargazer_count, is_private))
+            topics = [tag['topic']['name'] for tag in repo['repositoryTopics']['nodes'] if tag['topic']['stargazerCount'] > 1000]
+            items.append(Repository(name, description, language, url, stargazer_count, is_private, topics))
 
         if has_next:
             items.extend(self.get_user_starred_by_username(username, end_cursor))

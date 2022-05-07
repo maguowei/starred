@@ -11,6 +11,9 @@ from . import VERSION
 from .githubgql import GitHubGQL
 
 
+DEFAULT_CATEGORY = 'Others'
+TEXT_LENGTH_LIMIT = 200
+
 desc = '''<!--lint disable awesome-contributing awesome-license awesome-list-item match-punctuation no-repeat-punctuation no-undefined-references awesome-spell-check-->
 # Awesome Stars [![Awesome](https://awesome.re/badge.svg)](https://github.com/sindresorhus/awesome)
 
@@ -44,11 +47,13 @@ def html_escape(text):
 @click.option('--username', envvar='USER', required=True, help='GitHub username')
 @click.option('--token', envvar='GITHUB_TOKEN', required=True, help='GitHub token')
 @click.option('--sort',  is_flag=True, help='sort by language')
+@click.option('--topic', is_flag=True, help='category by topic')
 @click.option('--repository', default='', help='repository name')
+@click.option('--filename', default='README.md', help='file name')
 @click.option('--message', default='update stars', help='commit message')
 @click.option('--private', is_flag=True, default=False, help='include private repos')
 @click.version_option(version=VERSION, prog_name='starred')
-def starred(username, token, sort, repository, message, private):
+def starred(username, token, sort, topic, repository, filename, message, private):
     """GitHub starred
 
     creating your own Awesome List used GitHub stars!
@@ -56,6 +61,7 @@ def starred(username, token, sort, repository, message, private):
     example:
         starred --username maguowei --token=xxxxxxxx --sort > README.md
     """
+
     if repository:
         file = BytesIO()
         sys.stdout = file
@@ -77,23 +83,31 @@ def starred(username, token, sort, repository, message, private):
         if s.is_private and not private:
             continue
 
-        language = s.language or 'Others'
-        description = html_escape(s.description).replace('\n', '') if s.description else ''
-        if language not in repo_dict:
-            repo_dict[language] = []
-        repo_dict[language].append([s.name, s.url, description.strip()[:200]])
+        description = html_escape(s.description).replace('\n', '').strip()[:TEXT_LENGTH_LIMIT] if s.description else ''
+
+        if topic:
+            for category in s.topics or [DEFAULT_CATEGORY.lower()]:
+                if category not in repo_dict:
+                    repo_dict[category] = []
+                repo_dict[category].append([s.name, s.url, description])
+        else:
+            category = s.language or DEFAULT_CATEGORY
+
+            if category not in repo_dict:
+                repo_dict[category] = []
+            repo_dict[category].append([s.name, s.url, description])
 
     if sort:
         repo_dict = OrderedDict(sorted(repo_dict.items(), key=lambda l: l[0]))
 
-    for language in repo_dict.keys():
-        data = u'- [{}](#{})'.format(language, '-'.join(language.lower().split()))
+    for category in repo_dict.keys():
+        data = u'- [{}](#{})'.format(category, '-'.join(category.lower().split()))
         click.echo(data)
     click.echo('')
 
-    for language in repo_dict:
-        click.echo('## {} \n'.format(language.replace('#', '# #')))
-        for repo in repo_dict[language]:
+    for category in repo_dict:
+        click.echo('## {} \n'.format(category.replace('#', '# #')))
+        for repo in repo_dict[category]:
             data = u'- [{}]({}) - {}'.format(*repo)
             click.echo(data)
         click.echo('')
@@ -104,11 +118,13 @@ def starred(username, token, sort, repository, message, private):
         gh = GitHub(token=token)
         try:
             rep = gh.repository(username, repository)
-            readme = rep.readme()
-            readme.update(message, file.getvalue())
+            try:
+                rep.file_contents(f'/{filename}').update(message, file.getvalue())
+            except NotFoundError:
+                rep.create_file(filename, message, file.getvalue())
         except NotFoundError:
             rep = gh.create_repository(repository, 'A curated list of my GitHub stars!')
-            rep.create_file('README.md', 'starred initial commit', file.getvalue())
+            rep.create_file(filename, 'starred initial commit', file.getvalue())
         click.launch(rep.html_url)
 
 
