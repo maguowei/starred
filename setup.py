@@ -26,6 +26,8 @@ setup(
         'click==8.1.3',
         'requests==2.27.1',
         'github3.py==3.2.0',
+        'gql==3.2.0',
+        'aiohttp==3.8.1',
     ],
     entry_points={
         'console_scripts': [

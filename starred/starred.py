@@ -8,7 +8,7 @@ import click
 from github3 import GitHub
 from github3.exceptions import NotFoundError
 from . import VERSION
-from .github import get_user_starred_by_username
+from .githubgql import GitHubGQL
 
 
 desc = '''# Awesome Stars [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d730\
@@ -63,7 +63,13 @@ def starred(username, token, sort, repository, message, private):
     else:
         file = None
 
-    stars = get_user_starred_by_username(token, username)
+    gh = GitHubGQL(token)
+    try:
+        stars = gh.get_user_starred_by_username(username)
+    except Exception as e:
+        click.secho(f'Error: {e}', fg='red')
+        return
+
     click.echo(desc)
     repo_dict = {}
 
@@ -76,7 +82,7 @@ def starred(username, token, sort, repository, message, private):
         description = html_escape(s.description).replace('\n', '') if s.description else ''
         if language not in repo_dict:
             repo_dict[language] = []
-        repo_dict[language].append([s.name, s.url, description.strip()])
+        repo_dict[language].append([s.name, s.url, description.strip()[:200]])
 
     if sort:
         repo_dict = OrderedDict(sorted(repo_dict.items(), key=lambda l: l[0]))
