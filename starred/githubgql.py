@@ -55,7 +55,7 @@ class GitHubGQL:
         self.transport = AIOHTTPTransport(url=self.API_URL, headers=headers)
         self.client = Client(transport=self.transport, fetch_schema_from_transport=True)
 
-    def get_user_starred_by_username(self, username: str, after: str = '') -> list[Repository]:
+    def get_user_starred_by_username(self, username: str, after: str = ''):
         items = []
         result = self.client.execute(QUERY, variable_values={"username": username, "after": after})
 
