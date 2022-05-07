@@ -54,7 +54,7 @@ $ starred --username yourname --repository awesome-stars --sort
 
 2. [Setting the permissions of the GITHUB_TOKEN for your repository](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#setting-the-permissions-of-the-github_token-for-your-repository)
 
-set permissions to `Read and write permissions` and click save button
+set permissions to `Read and write permissions` and click `Save` button
 
 ![workflow-permissions](imgs/workflow-permissions.png)
 
