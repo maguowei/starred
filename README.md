@@ -22,8 +22,7 @@ Usage: starred [OPTIONS]
 
   creating your own Awesome List by GitHub stars!
 
-  example:     starred --username maguowei --token=xxxxxxxx --sort >
-  README.md
+  example:     starred --username maguowei --token=xxxxxxxx --sort > README.md
 
 Options:
   --username TEXT        GitHub username  [required]

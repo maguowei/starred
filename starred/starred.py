@@ -51,7 +51,7 @@ def html_escape(text):
 @click.option('--topic_limit', default=500, show_default=True, type=int, help='topic stargazer_count gt number, set bigger to reduce topics number')
 @click.option('--repository', default='', show_default=True, help='repository name')
 @click.option('--filename', default='README.md', show_default=True, help='file name')
-@click.option('--message', default='update stars', show_default=True, help='commit message')
+@click.option('--message', default='update awesome-stars, created by starred', show_default=True, help='commit message')
 @click.option('--private', is_flag=True, default=False, show_default=True, help='include private repos')
 @click.version_option(version=VERSION, prog_name='starred')
 def starred(username, token, sort, topic, repository, filename, message, private, topic_limit):
