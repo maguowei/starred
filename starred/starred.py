@@ -46,34 +46,35 @@ def html_escape(text):
 @click.command()
 @click.option('--username', envvar='USER', required=True, help='GitHub username')
 @click.option('--token', envvar='GITHUB_TOKEN', required=True, help='GitHub token')
-@click.option('--sort',  is_flag=True, help='sort by language')
-@click.option('--topic', is_flag=True, help='category by topic')
-@click.option('--repository', default='', help='repository name')
-@click.option('--filename', default='README.md', help='file name')
-@click.option('--message', default='update stars', help='commit message')
-@click.option('--private', is_flag=True, default=False, help='include private repos')
+@click.option('--sort',  is_flag=True, show_default=True, help='sort by category[language/topic] name alphabetically')
+@click.option('--topic', is_flag=True, show_default=True, help='category by topic, default is category by language')
+@click.option('--topic_limit', default=500, show_default=True, type=int, help='topic stargazer_count gt number, set bigger to reduce topics number')
+@click.option('--repository', default='', show_default=True, help='repository name')
+@click.option('--filename', default='README.md', show_default=True, help='file name')
+@click.option('--message', default='update stars', show_default=True, help='commit message')
+@click.option('--private', is_flag=True, default=False, show_default=True, help='include private repos')
 @click.version_option(version=VERSION, prog_name='starred')
-def starred(username, token, sort, topic, repository, filename, message, private):
+def starred(username, token, sort, topic, repository, filename, message, private, topic_limit):
     """GitHub starred
 
-    creating your own Awesome List used GitHub stars!
+    creating your own Awesome List by GitHub stars!
 
     example:
         starred --username maguowei --token=xxxxxxxx --sort > README.md
     """
+
+    gh = GitHubGQL(token)
+    try:
+        stars = gh.get_user_starred_by_username(username, topic_stargazer_count_limit=topic_limit)
+    except Exception as e:
+        click.secho(f'Error: {e}', fg='red')
+        return
 
     if repository:
         file = BytesIO()
         sys.stdout = file
     else:
         file = None
-
-    gh = GitHubGQL(token)
-    try:
-        stars = gh.get_user_starred_by_username(username)
-    except Exception as e:
-        click.secho(f'Error: {e}', fg='red')
-        return
 
     click.echo(desc)
     repo_dict = {}

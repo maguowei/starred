@@ -20,19 +20,29 @@ Usage: starred [OPTIONS]
 
   GitHub starred
 
-  creating your own Awesome List used GitHub stars!
+  creating your own Awesome List by GitHub stars!
 
-  example:     starred --username maguowei --token=xxxxxxxx --sort > README.md
+  example:     starred --username maguowei --token=xxxxxxxx --sort >
+  README.md
 
 Options:
-  --username TEXT    GitHub username  [required]
-  --token TEXT       GitHub token  [required]
-  --sort             sort by language
-  --repository TEXT  repository name
-  --message TEXT     commit message
-  --private          include private repos
-  --version          Show the version and exit.
-  --help             Show this message and exit.
+  --username TEXT        GitHub username  [required]
+  --token TEXT           GitHub token  [required]
+  --sort                 sort by category[language/topic] name alphabetically
+                         [default: False]
+
+  --topic                category by topic, default is category by language
+                         [default: False]
+
+  --topic_limit INTEGER  topic stargazer_count gt number, set bigger to reduce
+                         topics number  [default: 500]
+
+  --repository TEXT      repository name  [default: ]
+  --filename TEXT        file name  [default: README.md]
+  --message TEXT         commit message  [default: update stars]
+  --private              include private repos  [default: False]
+  --version              Show the version and exit.
+  --help                 Show this message and exit.
 ```
 
 ## Demo
@@ -46,7 +56,17 @@ $ starred --username yourname --repository awesome-stars --sort
 - [`maguowei/awesome-stars`](https://github.com/maguowei/awesome-stars)
 - [update awesome-stars every day by GitHub Action](https://github.com/maguowei/awesome-stars/blob/master/.github/workflows/schedules.yml) the example with GitHub Action
 
-## Use [awesome-stars](https://github.com/maguowei/awesome-stars) as Template
+### Who uses starred?
+
+- by search: https://github.com/search?p=1&q=%22Generated+by+starred%22&type=Code
+- by topics:
+  - https://github.com/topics/starred
+  - https://github.com/topics/awesome-stars
+
+## Use [awesome-stars](https://github.com/maguowei/awesome-stars) as template
+
+The simple way to create an awesome-stars repository is to use [maguowei/awesome-stars](https://github.com/maguowei/awesome-stars/generate) as template.
+It will auto update your awesome-stars repository every day by GitHub Action.
 
 1. Click [Create a new repository from awesome-stars](https://github.com/maguowei/awesome-stars/generate)
 

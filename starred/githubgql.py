@@ -64,7 +64,7 @@ class GitHubGQL:
         self.transport = AIOHTTPTransport(url=self.API_URL, headers=headers)
         self.client = Client(transport=self.transport, fetch_schema_from_transport=True)
 
-    def get_user_starred_by_username(self, username: str, after: str = ''):
+    def get_user_starred_by_username(self, username: str, after: str = '', topic_stargazer_count_limit: int = 0):
         items = []
         result = self.client.execute(QUERY, variable_values={"username": username, "after": after})
 
@@ -78,9 +78,9 @@ class GitHubGQL:
             url = repo['url']
             stargazer_count = repo['stargazerCount']
             is_private = repo['isPrivate']
-            topics = [tag['topic']['name'] for tag in repo['repositoryTopics']['nodes'] if tag['topic']['stargazerCount'] > 1000]
+            topics = [tag['topic']['name'] for tag in repo['repositoryTopics']['nodes'] if tag['topic']['stargazerCount'] > topic_stargazer_count_limit]
             items.append(Repository(name, description, language, url, stargazer_count, is_private, topics))
 
         if has_next:
-            items.extend(self.get_user_starred_by_username(username, end_cursor))
+            items.extend(self.get_user_starred_by_username(username, end_cursor, topic_stargazer_count_limit))
         return items
