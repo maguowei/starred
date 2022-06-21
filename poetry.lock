@@ -157,7 +157,7 @@ uritemplate = ">=3.0.0"
 
 [[package]]
 name = "gql"
-version = "3.2.0"
+version = "3.3.0"
 description = "GraphQL client for Python"
 category = "main"
 optional = false
@@ -337,7 +337,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytest-
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "35dd1ed95c71bf6353da06c5b13e8330e09f163129f773ee2a81f310a46fdaab"
+content-hash = "fe66df5783681f89a5489b82b834224d72af56b49b66adeffed1eb8660cdb663"
 
 [metadata.files]
 aiohttp = [
@@ -588,8 +588,8 @@ frozenlist = [
     {file = "github3.py-3.2.0.tar.gz", hash = "sha256:09b72be1497d346b0968cde8360a0d6af79dc206d0149a63cd3ec86c65c377cc"},
 ]
 gql = [
-    {file = "gql-3.2.0-py2.py3-none-any.whl", hash = "sha256:cea850a6a922af74e01386b5c299e3ca9cf491f0c4bf039541da8e8b1f50a437"},
-    {file = "gql-3.2.0.tar.gz", hash = "sha256:026b1c6b605cb9d6f4885ca5d8b1873a686a5b81842f356a834141bf123d4975"},
+    {file = "gql-3.3.0-py2.py3-none-any.whl", hash = "sha256:77fbc0a47c2df4edb8a98afa8c9c23aead5e0b4ab26d424e2dcfeb3fa2a2319d"},
+    {file = "gql-3.3.0.tar.gz", hash = "sha256:efa405aebe0e7b2fe342b43cfc70fd57e2e385fcae04f79c509366ad48a64381"},
 ]
 graphql-core = [
     {file = "graphql-core-3.2.1.tar.gz", hash = "sha256:9d1bf141427b7d54be944587c8349df791ce60ade2e3cccaf9c56368c133c201"},
