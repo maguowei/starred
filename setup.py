@@ -24,9 +24,9 @@ setup(
     python_requires='>=3.7',
     install_requires=[
         'click==8.1.3',
-        'requests==2.27.1',
+        'requests==2.28.1',
         'github3.py==3.2.0',
-        'gql==3.2.0',
+        'gql==3.4.0',
         'aiohttp==3.8.1',
     ],
     entry_points={
