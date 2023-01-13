@@ -99,7 +99,7 @@ def starred(username, token, sort, topic, repository, filename, message, private
             repo_dict[category].append([s.name, s.url, description])
 
     if sort:
-        repo_dict = OrderedDict(sorted(repo_dict.items(), key=lambda l: l[0]))
+        repo_dict = OrderedDict(sorted(repo_dict.items(), key=lambda cate: cate[0]))
 
     for category in repo_dict.keys():
         data = u'- [{}](#{})'.format(category, '-'.join(category.lower().split()))
