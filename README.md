@@ -1,7 +1,7 @@
 # Starred
 
 [![ci](https://github.com/maguowei/starred/actions/workflows/ci.yml/badge.svg)](https://github.com/maguowei/starred/actions/workflows/ci.yml)
-[![Upload Python Package](https://github.com/maguowei/starred/actions/workflows/deploy.yml/badge.svg)](https://github.com/maguowei/starred/actions/workflows/deploy.yml)
+[![Publish Python Package](https://github.com/maguowei/starred/actions/workflows/publish.yml/badge.svg)](https://github.com/maguowei/starred/actions/workflows/publish.yml)
 
 ## Install
 
