@@ -1,12 +1,34 @@
 [tool.poetry]
 name = "starred"
-version = "3.2.0"
-description = ""
+version = "4.3.0"
+description = "creating your own Awesome List used GitHub stars!"
 authors = ["maguowei <imaguowei@gmail.com>"]
+homepage = "https://github.com/maguowei/starred"
+repository = "https://github.com/maguowei/starred"
+documentation = "https://github.com/maguowei/starred"
+keywords = ["GitHub starred", "starred"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+include = ["README.md"]
+readme = "README.md"
 license = "MIT"
 
+[tool.poetry.scripts]
+starred = "starred.starred:starred"
+
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.7"
 click = "^8.1.3"
 "requests" = "^2.28.2"
 "github3.py" = "^3.2.0"
