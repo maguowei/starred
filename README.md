@@ -69,25 +69,25 @@ It will auto update your awesome-stars repository every day by GitHub Action.
 
 1. Click [Create a new repository from awesome-stars](https://github.com/maguowei/awesome-stars/generate)
 
-![use-awesome-stars-as-template](imgs/use-awesome-stars-as-template.png)
+![use-awesome-stars-as-template](https://raw.githubusercontent.com/maguowei/starred/master/imgs/use-awesome-stars-as-template.png)
 
 2. [Setting the permissions of the GITHUB_TOKEN for your repository](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/managing-github-actions-settings-for-a-repository#setting-the-permissions-of-the-github_token-for-your-repository)
 
 set permissions to `Read and write permissions` and click `Save` button
 
-![workflow-permissions](imgs/workflow-permissions.png)
+![workflow-permissions](https://raw.githubusercontent.com/maguowei/starred/master/imgs/workflow-permissions.png)
 
 3. Run the workflow first time
 
 click `Run workflow` button
 
-![run-workflow](imgs/run-workflow.png)
+![run-workflow](https://raw.githubusercontent.com/maguowei/starred/master/imgs/run-workflow.png)
 
 4. Customize the workflow schedule
 
 - [.github/workflows/schedules.yml#L5](https://github.com/maguowei/awesome-stars/blob/master/.github/workflows/schedules.yml#L5)
 
-![schedule](imgs/schedule.png)
+![schedule](https://raw.githubusercontent.com/maguowei/starred/master/imgs/schedule.png)
 
 ## FAQ
 
