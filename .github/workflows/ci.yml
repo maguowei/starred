@@ -22,7 +22,7 @@ jobs:
         poetry install
     - name: pycodestyle
       run: pycodestyle --max-line-length=200 starred
-    - name: Build project for distribution
+    - name: Build test
       run: poetry build
     - name: test
       env:

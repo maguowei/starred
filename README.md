@@ -101,7 +101,7 @@ click `Run workflow` button
     $ poetry build 
     $ pip install dist/starred-${x.x.x}.tar.gz
     ```
-3. Dev & RUN
+3. Dev & Run
    ```bash
    poetry run starred --help
    ```
