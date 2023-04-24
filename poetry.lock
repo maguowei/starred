@@ -446,21 +446,25 @@ files = [
 
 [[package]]
 name = "github3-py"
-version = "3.2.0"
+version = "4.0.0"
 description = "Python wrapper for the GitHub API(http://developer.github.com/v3)"
 category = "main"
 optional = false
-python-versions = ">=3.6"
+python-versions = ">=3.7"
 files = [
-    {file = "github3.py-3.2.0-py2.py3-none-any.whl", hash = "sha256:a9016e40609c6f5cb9954dd188d08257dafd09c4da8c0e830a033fca00054b0d"},
-    {file = "github3.py-3.2.0.tar.gz", hash = "sha256:09b72be1497d346b0968cde8360a0d6af79dc206d0149a63cd3ec86c65c377cc"},
+    {file = "github3.py-4.0.0-py3-none-any.whl", hash = "sha256:200a9160e94ee2d451321a82415315a5bbc0c94b679e79b7ba4d4c52224f9490"},
+    {file = "github3.py-4.0.0.tar.gz", hash = "sha256:0fb001df560298abcae8fa3420385b2e605cb1e8a4d67d77c4361350a84b71d1"},
 ]
 
 [package.dependencies]
-PyJWT = {version = ">=2.3.0", extras = ["crypto"]}
+pyjwt = {version = ">=2.3.0", extras = ["crypto"]}
 python-dateutil = ">=2.6.0"
 requests = ">=2.18"
 uritemplate = ">=3.0.0"
+
+[package.extras]
+dev = ["build", "github3-py[test]", "tox (>=3.1.3)", "twine", "wheel"]
+test = ["betamax (>=0.5.1)", "betamax-matchers (>=0.3.0)", "pytest (>=7.0)", "pytest-xdist[psutil]"]
 
 [[package]]
 name = "gql"
@@ -852,4 +856,4 @@ testing = ["flake8 (<5)", "func-timeout", "jaraco.functools", "jaraco.itertools"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.7"
-content-hash = "c4968f7f9109d2f2cb0c45c36ac7a78c71a57621cba6c01222a637cafc3b921b"
+content-hash = "1c38e028797251214ef51b6ac89c5dc56ee3d6ccdce501ecc5e3616c652c789e"
