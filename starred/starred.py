@@ -25,11 +25,7 @@ desc = '''<!--lint disable awesome-contributing awesome-license awesome-list-ite
 license_ = '''
 ## License
 
-[![CC0](http://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg)]\
-(https://creativecommons.org/publicdomain/zero/1.0/)
-
-To the extent possible under law, [{username}](https://github.com/{username})\
- has waived all copyright and related or neighboring rights to this work.
+The files in this repository are licensed under the license found [here]({license}).
 '''
 
 html_escape_table = {
@@ -53,8 +49,9 @@ def html_escape(text):
 @click.option('--filename', default='README.md', show_default=True, help='file name')
 @click.option('--message', default='update awesome-stars, created by starred', show_default=True, help='commit message')
 @click.option('--private', is_flag=True, default=False, show_default=True, help='include private repos')
+@click.option('--license', default='', show_default=True, help='license file path within repo')
 @click.version_option(version=VERSION, prog_name='starred')
-def starred(username, token, sort, topic, repository, filename, message, private, topic_limit):
+def starred(username, token, sort, topic, repository, filename, message, private, topic_limit, license):
     """GitHub starred
 
     creating your own Awesome List by GitHub stars!
@@ -113,7 +110,8 @@ def starred(username, token, sort, topic, repository, filename, message, private
             click.echo(data)
         click.echo('')
 
-    click.echo(license_.format(username=username))
+    if license:
+        click.echo(license_.format(license=license))
 
     if file:
         gh = GitHub(token=token)
