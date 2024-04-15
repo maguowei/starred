@@ -90,13 +90,13 @@ def starred(username, token, sort, topic, repository, filename, message, private
             for category in s.topics or [DEFAULT_CATEGORY.lower()]:
                 if category not in repo_dict:
                     repo_dict[category] = []
-                repo_dict[category].append([s.name, s.url, description])
+                repo_dict[category].append([s.name, s.url, description, s.is_archived, s.is_locked, s.is_fork, s.pushed_at, s.updated_at])
         else:
             category = s.language or DEFAULT_CATEGORY
 
             if category not in repo_dict:
                 repo_dict[category] = []
-            repo_dict[category].append([s.name, s.url, description])
+            repo_dict[category].append([s.name, s.url, description, s.is_archived, s.is_locked, s.is_fork, s.pushed_at, s.updated_at])
 
     if sort:
         repo_dict = OrderedDict(sorted(repo_dict.items(), key=lambda cate: cate[0]))
@@ -109,7 +109,10 @@ def starred(username, token, sort, topic, repository, filename, message, private
     for category in repo_dict:
         click.echo('## {} \n'.format(category.replace('#', '# #')))
         for repo in repo_dict[category]:
-            data = u'- [{}]({}) - {}'.format(*repo)
+            data = u"""
+- [{}]({}) - {}   
+  - is_archived: {}, is_locked: {}, is_fork: {}, pushed_at: {}, updated_at: {}
+            """.format(*repo)
             click.echo(data)
         click.echo('')
 

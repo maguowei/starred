@@ -14,6 +14,9 @@ QUERY = gql("""
             stargazerCount
             forkCount
             isPrivate
+            isArchived
+            isLocked
+            isFork
             pushedAt
             updatedAt
             languages(first: 1, orderBy: {field: SIZE, direction: DESC}) {
@@ -45,7 +48,7 @@ QUERY = gql("""
 
 
 class Repository:
-    def __init__(self, name, description, language, url, stargazer_count, is_private, topics):
+    def __init__(self, name, description, language, url, stargazer_count, is_private, topics, is_archived, is_locked, is_fork, pushed_at, updated_at):
         self.name = name
         self.description = description
         self.language = language
@@ -53,7 +56,11 @@ class Repository:
         self.stargazer_count = stargazer_count
         self.is_private = is_private
         self.topics = topics
-
+        self.is_archived = is_archived
+        self.is_locked = is_locked
+        self.is_fork = is_fork
+        self.pushed_at = pushed_at
+        self.updated_at = updated_at
 
 class GitHubGQL:
     API_URL = "https://api.github.com/graphql"
@@ -79,7 +86,12 @@ class GitHubGQL:
             stargazer_count = repo['stargazerCount']
             is_private = repo['isPrivate']
             topics = [tag['topic']['name'] for tag in repo['repositoryTopics']['nodes'] if tag['topic']['stargazerCount'] > topic_stargazer_count_limit]
-            items.append(Repository(name, description, language, url, stargazer_count, is_private, topics))
+            is_archived = repo['isArchived']
+            is_locked = repo['isLocked']
+            is_fork = repo['isFork']
+            pushed_at = repo['pushedAt']
+            updated_at = repo['updatedAt']
+            items.append(Repository(name, description, language, url, stargazer_count, is_private, topics, is_archived, is_locked, is_fork, pushed_at, updated_at))
 
         if has_next:
             items.extend(self.get_user_starred_by_username(username, end_cursor, topic_stargazer_count_limit))
