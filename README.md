@@ -40,6 +40,7 @@ Options:
   --filename TEXT        file name  [default: README.md]
   --message TEXT         commit message  [default: update stars]
   --private              include private repos  [default: False]
+  --license TEXT         license file path within repo  [default: ]
   --version              Show the version and exit.
   --help                 Show this message and exit.
 ```
