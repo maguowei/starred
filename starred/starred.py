@@ -116,16 +116,19 @@ def starred(username, token, sort, topic, repository, filename, message, private
     click.echo(license_.format(username=username))
 
     if file:
+        file_value = file.getvalue()
         gh = GitHub(token=token)
         try:
             rep = gh.repository(username, repository)
             try:
-                rep.file_contents(f'/{filename}').update(message, file.getvalue())
+                content = rep.file_contents(f'/{filename}')
+                if content.decoded != file_value:
+                    content.update(message, file_value)
             except NotFoundError:
-                rep.create_file(filename, message, file.getvalue())
+                rep.create_file(filename, message, file_value)
         except NotFoundError:
             rep = gh.create_repository(repository, 'A curated list of my GitHub stars!')
-            rep.create_file(filename, 'starred initial commit', file.getvalue())
+            rep.create_file(filename, 'starred initial commit', file_value)
         click.launch(rep.html_url)
 
 
