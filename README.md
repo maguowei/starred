@@ -98,10 +98,11 @@ click `Run workflow` button
 2. Install the master branch version
 
     ```bash
-    $ poetry build 
+    $ uv build
     $ pip install dist/starred-${x.x.x}.tar.gz
     ```
 3. Dev & Run
    ```bash
-   poetry run starred --help
+   uv sync --dev
+   uv run starred --help
    ```

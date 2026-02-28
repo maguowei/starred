@@ -1,11 +1,11 @@
-[tool.poetry]
+[project]
 name = "starred"
 version = "4.3.0"
 description = "creating your own Awesome List used GitHub stars!"
-authors = ["maguowei <imaguowei@gmail.com>"]
-homepage = "https://github.com/maguowei/starred"
-repository = "https://github.com/maguowei/starred"
-documentation = "https://github.com/maguowei/starred"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "maguowei", email = "imaguowei@gmail.com" }]
 keywords = ["GitHub starred", "starred"]
 classifiers = [
     "Development Status :: 5 - Production/Stable",
@@ -18,23 +18,31 @@ classifiers = [
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
 ]
-include = ["README.md"]
-readme = "README.md"
-license = "MIT"
+dependencies = [
+    "click>=8.1.7",
+    "requests>=2.31.0",
+    "github3.py>=4.0.1",
+    "gql>=3.5.0",
+    "aiohttp>=3.9.4",
+]
 
-[tool.poetry.scripts]
+[project.urls]
+Homepage = "https://github.com/maguowei/starred"
+Repository = "https://github.com/maguowei/starred"
+Documentation = "https://github.com/maguowei/starred"
+
+[project.scripts]
 starred = "starred.starred:starred"
 
-[tool.poetry.dependencies]
-python = "^3.10"
-click = "^8.1.7"
-"requests" = "^2.31.0"
-"github3.py" = "^4.0.1"
-gql = "^3.5.0"
-aiohttp = "^3.9.4"
-
-[tool.poetry.dev-dependencies]
+[dependency-groups]
+dev = ["pycodestyle>=2.12.1"]
 
 [build-system]
-requires = ["poetry-core>=1.0.0", "setuptools"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling>=1.27.0"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["starred"]
+
+[tool.hatch.build.targets.sdist]
+exclude = [".venv", ".uv-cache"]
