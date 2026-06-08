@@ -6,8 +6,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "jq -r '.tool_input.file_path // .tool_response.filePath' | { read -r f; case \"$f\" in *starred/*.py) uv run pycodestyle --max-line-length=200 \"$f\";; esac; } 2>/dev/null || true",
-            "statusMessage": "Running pycodestyle..."
+            "command": "jq -r '.tool_input.file_path // .tool_response.filePath' | { read -r f; case \"$f\" in *starred/*.py) uv run ruff format \"$f\";; esac; } 2>/dev/null || true",
+            "statusMessage": "Running ruff format..."
           }
         ]
       }

@@ -13,14 +13,15 @@
 
 ## 命令
 
-- Lint:`uv run pycodestyle --max-line-length=200 starred`
+- Lint:`uv run ruff check starred`
+- 格式化:`uv run ruff format starred`(仅检查不修改:`uv run ruff format --check starred`)
 - 构建:`uv build`
 - 运行 / 集成测试:`uv run starred --username <user> --token ${GITHUB_TOKEN} --sort`
 
 ## 代码风格
 
-- 使用 pycodestyle,行长限制为 **`--max-line-length=200`**(非 pycodestyle 默认的 79)。CI 严格执行此命令,代码行需控制在 200 字符内。
-- 未配置自动格式化工具(无 black/ruff),请沿用现有风格。
+- 使用 **Ruff** 做 lint 与格式化,配置在 `pyproject.toml` 的 `[tool.ruff]`:行长 200、lint 规则 `E/W/F`、字符串用单引号(`quote-style = "single"`)。
+- 提交前确保 `ruff check` 与 `ruff format --check` 均通过(CI 严格执行)。
 
 ## 测试
 

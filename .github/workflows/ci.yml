@@ -20,8 +20,10 @@ jobs:
       - name: Install dependencies
         run: |
           uv sync --locked --dev
-      - name: pycodestyle
-        run: uv run pycodestyle --max-line-length=200 starred
+      - name: Ruff lint
+        run: uv run ruff check starred
+      - name: Ruff format check
+        run: uv run ruff format --check starred
       - name: Build test
         run: uv build
       - name: test

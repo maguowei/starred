@@ -40,8 +40,7 @@ QUERY = gql("""
         }
       }
     }
-    """
-            )
+    """)
 
 
 class Repository:
@@ -56,17 +55,17 @@ class Repository:
 
 
 class GitHubGQL:
-    API_URL = "https://api.github.com/graphql"
+    API_URL = 'https://api.github.com/graphql'
 
     def __init__(self, token):
         self.token = token
-        headers = {"Authorization": f"Bearer {token}"}
+        headers = {'Authorization': f'Bearer {token}'}
         self.transport = AIOHTTPTransport(url=self.API_URL, headers=headers)
         self.client = Client(transport=self.transport, fetch_schema_from_transport=True)
 
     def get_user_starred_by_username(self, username: str, after: str = '', topic_stargazer_count_limit: int = 0):
         items = []
-        result = self.client.execute(QUERY, variable_values={"username": username, "after": after})
+        result = self.client.execute(QUERY, variable_values={'username': username, 'after': after})
 
         has_next = result['user']['starredRepositories']['pageInfo']['hasNextPage']
         end_cursor = result['user']['starredRepositories']['pageInfo']['endCursor']

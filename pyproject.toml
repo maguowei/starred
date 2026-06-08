@@ -35,7 +35,7 @@ Documentation = "https://github.com/maguowei/starred"
 starred = "starred.starred:starred"
 
 [dependency-groups]
-dev = ["pycodestyle>=2.12.1"]
+dev = ["ruff>=0.15"]
 
 [build-system]
 requires = ["hatchling>=1.27.0"]
@@ -46,3 +46,12 @@ packages = ["starred"]
 
 [tool.hatch.build.targets.sdist]
 exclude = [".venv", ".uv-cache"]
+
+[tool.ruff]
+line-length = 200
+
+[tool.ruff.lint]
+select = ["E", "W", "F"]
+
+[tool.ruff.format]
+quote-style = "single"

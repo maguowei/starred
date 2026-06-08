@@ -7,13 +7,14 @@ description: 验证对 starred 项目的改动 —— 运行 pycodestyle lint �
 
 按顺序执行,任一步骤失败即停止并报告。
 
-## 1. Lint 检查
+## 1. Lint 与格式检查
 
 ```bash
-uv run pycodestyle --max-line-length=200 starred
+uv run ruff check starred
+uv run ruff format --check starred
 ```
 
-无输出即通过。若有违规,先修复再继续。
+两条命令均无报错、退出码为 0 即通过。若有违规,先用 `uv run ruff check --fix starred` 和 `uv run ruff format starred` 修复再继续。
 
 ## 2. 集成测试
 
