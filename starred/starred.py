@@ -46,7 +46,7 @@ def html_escape(text):
 @click.command()
 @click.option('--username', envvar='USER', required=True, help='GitHub username')
 @click.option('--token', envvar='GITHUB_TOKEN', required=True, help='GitHub token')
-@click.option('--sort',  is_flag=True, show_default=True, help='sort by category[language/topic] name alphabetically')
+@click.option('--sort', type=click.Choice(['alphabetical', 'time']), help='sort repos: "alphabetical" sorts categories by name, "time" sorts repos within each category by star time (newest first)')
 @click.option('--topic', is_flag=True, show_default=True, help='category by topic, default is category by language')
 @click.option('--topic_limit', default=500, show_default=True, type=int, help='topic stargazer_count gt number, set bigger to reduce topics number')
 @click.option('--repository', default='', show_default=True, help='repository name')
@@ -60,7 +60,7 @@ def starred(username, token, sort, topic, repository, filename, message, private
     creating your own Awesome List by GitHub stars!
 
     example:
-        starred --username maguowei --token=xxxxxxxx --sort > README.md
+        starred --username maguowei --token=xxxxxxxx --sort alphabetical > README.md
     """
 
     gh = GitHubGQL(token)
@@ -90,16 +90,19 @@ def starred(username, token, sort, topic, repository, filename, message, private
             for category in s.topics or [DEFAULT_CATEGORY.lower()]:
                 if category not in repo_dict:
                     repo_dict[category] = []
-                repo_dict[category].append([s.name, s.url, description])
+                repo_dict[category].append([s.name, s.url, description, s.starred_at])
         else:
             category = s.language or DEFAULT_CATEGORY
 
             if category not in repo_dict:
                 repo_dict[category] = []
-            repo_dict[category].append([s.name, s.url, description])
+            repo_dict[category].append([s.name, s.url, description, s.starred_at])
 
-    if sort:
+    if sort == 'alphabetical':
         repo_dict = OrderedDict(sorted(repo_dict.items(), key=lambda cate: cate[0]))
+    elif sort == 'time':
+        for category in repo_dict:
+            repo_dict[category].sort(key=lambda repo: repo[3], reverse=True)
 
     for category in repo_dict.keys():
         data = u'- [{}](#{})'.format(category, '-'.join(category.lower().split()))
@@ -109,7 +112,7 @@ def starred(username, token, sort, topic, repository, filename, message, private
     for category in repo_dict:
         click.echo('## {} \n'.format(category.replace('#', '# #')))
         for repo in repo_dict[category]:
-            data = u'- [{}]({}) - {}'.format(*repo)
+            data = u'- [{}]({}) - {}'.format(repo[0], repo[1], repo[2])
             click.echo(data)
         click.echo('')
 
